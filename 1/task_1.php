@@ -49,14 +49,15 @@
                             </div>
                             <ul id="js-list-msg" class="list-group px-2 pb-2 js-list-filter">
                                 <?php
-                                $array = array('Reports', 'Analytics', 'Export', 'Storage');
+                                $array = array(array('reports file','Reports'), array('analytics graphs','Analytics'), array('export download','Export'), array('storage','Storage'));
                                 foreach ($array as $i) {
-                                    echo '<li class="list-group-item">
-                                            <span data-filter-tags="reports file">' . $i . '</span>
-                                        </li>';
+                                    echo "<li class=\"list-group-item\">
+                                            <span data-filter-tags=\"$i[0]\"> $i[1] </span>
+                                        </li>";
                                 }
 
                                 ?>
+
 
                             </ul>
                             <div class="filter-message js-filter-message mt-0 fs-sm"></div>
