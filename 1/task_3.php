@@ -36,15 +36,32 @@
                 <div class="panel-content">
                     <ol class="breadcrumb page-breadcrumb">
                         <?php
-                        $a = array('Главная', 'PHP', 'Функции');
-                        foreach ($a as $k => $i) {
-                            if ($k < 2) {
-                                echo "<li class=\"breadcrumb-item\"><a href=\"#\">$i</a></li>";
-                            } else {
-                                echo "<li class=\"breadcrumb-item active\">$i</li>";
-                            }
-                        }
+                        $a = [
+                            [
+                                "title" => "Главная",
+                                "href" => "#",
+                                "is_link" => true
+                            ],
+                            [
+                                "title" => "PHP",
+                                "href" => "#",
+                                "is_link" => true
+                            ],
+                            [
+                                "title" => "Функции",
+                                "href" => "#",
+                                "is_link" => false
+                            ]
+                        ];
                         ?>
+                        <?php foreach ($a AS $i):?>
+                        <?php if($i["is_link"]): ?>
+                        <li class="breadcrumb-item"><a href="<?php echo $i["href"];?>"><?php echo $i["title"];?></a></li>
+                            <?php else: ?>
+                            <li class="breadcrumb-item active"><?php echo $i["title"];?></li>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+
                     </ol>
                 </div>
             </div>

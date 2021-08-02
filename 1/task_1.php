@@ -49,16 +49,19 @@
                             </div>
                             <ul id="js-list-msg" class="list-group px-2 pb-2 js-list-filter">
                                 <?php
-                                $array = array(array('reports file','Reports'), array('analytics graphs','Analytics'), array('export download','Export'), array('storage','Storage'));
-                                foreach ($array as $i) {
-                                    echo "<li class=\"list-group-item\">
-                                            <span data-filter-tags=\"$i[0]\"> $i[1] </span>
-                                        </li>";
-                                }
-
+                                $array = [
+                                        ['tags'=>'reports file', 'title'=>'Reports'],
+                                        ['tags'=>'analytics graphs', 'title'=>'Analytics'],
+                                        ['tags'=>'export download', 'title'=>'Export'],
+                                        ['tags'=>'storage', 'title'=>'Storage']
+                                        ];
                                 ?>
-
-
+                                <?php foreach ($array as $i): ?>
+                                    <li class="list-group-item">
+                                            <span data-filter-tags="<?php echo $i['tags'];?>"> <?php echo $i['title'];?> </span>
+                                        </li>
+                                <?php endforeach; ?>
+                            </ul>
                             </ul>
                             <div class="filter-message js-filter-message mt-0 fs-sm"></div>
                         </div>
