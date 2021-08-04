@@ -34,34 +34,27 @@
                         <div class="panel-content">
                            <div class="d-flex flex-wrap demo demo-h-spacing mt-3 mb-3">
                                <?php
-                               $a = array(array('img/demo/authors/sunny.png', 'Sunny', 'A.', '(UI/UX Expert)', 'Lead Author', '@myplaneticket', 'myorange', 'active'),
-                                   array('img/demo/authors/josh.png', 'Jos', 'K.', '(ASP.NET Developer)', 'Partner &amp; Contributor', '@atlantez', 'Walapa', 'active'),
-                                   array('img/demo/authors/jovanni.png', 'Jovanni', 'Lo', '(PHP Developer)', 'Partner &amp; Contributor', '@lodev09', 'lodev09', 'disabled'),
-                                   array('img/demo/authors/roberto.png', ' Roberto', ' R.', '(Rails Developer)', ' Partner &amp; Contributor', '@sildur', 'sildur', 'disabled'));
-
-
-
-
-
-                               foreach ($a as $i) {
-                                   echo " <div class=\"rounded-pill bg-white shadow-sm p-2 border-faded mr-3 d-flex flex-row align-items-center justify-content-center flex-shrink-0 $i[7]\">
-                            <img src=\"$i[0]\" alt=\"$i[1]$i[2]\" class=\"img-thumbnail img-responsive rounded-circle\" style=\"width:5rem; height: 5rem;\">
-                            <div class=\"ml-2 mr-3\">
-                                <h5 class=\"m-0\">
-                                    $i[1]$i[2] $i[3]
-                                    <small class=\"m-0 fw-300\">
-                                       $i[4]
-                                    </small>
-                                </h5>
-                                <a href=\"https://twitter.com/$i[5]\" class=\"text-info fs-sm\" target=\"_blank\">$i[5]</a>
-                                -
-                                <a href=\"https://wrapbootstrap.com/user/$i[6]\" class=\"text-info fs-sm\" target=\"_blank\" title=\"Contact $i[1]\"><i class=\"fal fa-envelope\"></i></a>
-                            </div>
-                        </div>";
-                               }
-
-
+                               $a = [["avatar"=>"img/demo/authors/sunny.png", "first_name"=>"Sunny", "last_name"=>"A.", "competence"=>"[UI/UX Expert]", "position"=>"Lead Author", "twitter"=>"@myplaneticket", "username"=>"myorange", "status"=>"active"],
+                                   ["avatar"=>"img/demo/authors/josh.png", "first_name"=>"Jos", "last_name"=>"K.", "competence"=>"[ASP.NET Developer]", "position"=>"Partner &amp; Contributor", "twitter"=>"@atlantez", "username"=>"Walapa", "status"=>"active"],
+                                   ["avatar"=>"img/demo/authors/jovanni.png", "first_name"=>"Jovanni", "last_name"=>"Lo", "competence"=>"[PHP Developer]", "position"=>"Partner &amp; Contributor", "twitter"=>"@lodev09", "username"=>"lodev09", "status"=>"disabled"],
+                                   ["avatar"=>"img/demo/authors/roberto.png", "first_name"=>"Roberto", "last_name"=>"R.", "competence"=>"[Rails Developer]", "position"=>"Partner &amp; Contributor", "twitter"=>"@sildur", "username"=>"sildur", "status"=>"disabled"]];
                                ?>
+
+                               <?php foreach ($a as $i):?>
+                                   <div class="rounded-pill bg-white shadow-sm p-2 border-faded mr-3 d-flex flex-row align-items-center justify-content-center flex-shrink-0 <?php echo $i["status"]?>">
+                                       <img src="<?php echo $i["avatar"]?>" alt="<?php echo $i["first_name"]?> <?php echo $i["last_name"]?>" class="img-thumbnail img-responsive rounded-circle" style="width:5rem; height: 5rem;">
+                                       <div class="ml-2 mr-3">
+                                           <h5 class="m-0">
+                                               <?php echo $i["first_name"]?> <?php echo $i["last_name"]?> <?php echo $i["competence"]?>
+                                               <small class="m-0 fw-300">
+                                                   <?php echo $i["position"]?>
+                                               </small>
+                                           </h5>
+                                           <a href="https://twitter.com/<?php echo $i["twitter"]?>" class="text-info fs-sm" target="_blank"><?php echo $i["twitter"]?></a> -
+                                           <a href="https://wrapbootstrap.com/user/<?php echo $i["username"]?>" class="text-info fs-sm" target="_blank" title="Contact <?php echo $i["first_name"]?>"><i class="fal fa-envelope"></i></a>
+                                       </div>
+                                   </div>
+                               <?php endforeach;?>
                         </div>
                         </div>
                     </div>

@@ -35,17 +35,20 @@
             <div class="panel-container show">
                 <div class="panel-content">
                     <?php
-                    $a = array(array('d-flex mt-2', 'My Tasks', 'd-inline-block ml-auto', '130 / 500', 'progress progress-sm mb-3', 'progress-bar bg-fusion-400', '65%;', '65'),
-                        array('d-flex', 'Transfered', 'd-inline-block ml-auto', '440 TB', 'progress progress-sm mb-3', 'progress-bar bg-success-500', '34%;', '34'),
-                        array('d-flex', 'Bugs Squashed', 'd-inline-block ml-auto', '77%', 'progress progress-sm mb-3', 'progress-bar bg-info-400', '77%;', '77'),
-                        array('d-flex', 'User Testing', 'd-inline-block ml-auto', '7 days', 'progress progress-sm mb-g', 'progress-bar bg-primary-300', '84%;', '84'));
-                    foreach ($a as $i) {
-                        echo "<div class=\"$i[0]\"> $i[1]<span class=\"$i[2]\">$i[3]</span></div>
-                        <div class=\"$i[4]\">
-                            <div class=\"$i[5]\" role=\"progressbar\" style=\"width:$i[6]\" aria-valuenow=\"$i[7]\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>
-                        </div>";
-                    }
+                    $a = [["title"=>"My Tasks", "value"=>"130 / 500", "progress_bar"=>"bg-fusion-400", "style_percent"=>"65%;", "now"=>"65"],
+                        ["title"=>"Transfered", "value"=>"440 TB", "progress_bar"=>"bg-success-500", "style_percent"=>"34%;", "now"=>"34"],
+                        ["title"=>"Bugs Squashed", "value"=>"77%", "progress_bar"=>"bg-info-400", "style_percent"=>"77%;", "now"=>"77"],
+                        ["title"=>"User Testing", "value"=>"7 days", "progress_bar"=>"bg-primary-300", "style_percent"=>"84%;", "now"=>"84"]];
                     ?>
+                    <?php foreach ($a as $i):?>
+                    <div class="d-flex mt-2">
+                        <?php echo $i["title"]?>
+                        <span class="d-inline-block ml-auto"><?php echo $i["value"]?></span>
+                    </div>
+                    <div class="progress progress-sm mb-3">
+                        <div class="progress-bar <?php echo $i["progress_bar"]?>" role="progressbar" style="width: <?php echo $i["style_percent"]?>" aria-valuenow="<?php echo $i["now"]?>" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <?php endforeach;?>
                 </div>
             </div>
         </div>
