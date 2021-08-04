@@ -36,28 +36,18 @@
                             <div class="panel-content">
                                 <div class="form-group">
                                     <?php
-                                    $host_bd = '127.0.0.1';
-                                    $user_bd = 'root';
-                                    $pass_bd = 'root';
-                                    $db_name_bd = 'phptraning';
-
-                                    $bdConnect = mysqli_connect($host_bd, $user_bd, $pass_bd, $db_name_bd);
-
-                                    $t = $_GET['text'];
+                                    $t= $_POST['text'];
+                                    $pdo = new PDO("mysql:host=127.0.0.1; dbname=phptraning;", "root", "root");
                                     $sql = "INSERT INTO text9 (post_text) VALUES ('$t')";
-                                    mysqli_query($bdConnect, $sql);
-                                    //$t = var_dump($_GET);
-                                    //echo "$t";
-
-
-
-
-
+                                    $statement = $pdo->prepare($sql);
+                                    $statement->execute();
+                                    $a = $statement->fetchAll(PDO::FETCH_ASSOC);
+                                    //var_dump($_POST);
                                     ?>
-                                    <form action="">
+                                    <form action="" method="post">
                                         <label class="form-label" for="simpleinput">Text</label>
                                         <input type="text" name="text" class="form-control">
-                                      <button class="btn btn-success mt-3">Submit</button>
+                                      <button class="btn btn-success mt-3" type="submit">Submit</button>
                                     </form>
 
                                 </div>

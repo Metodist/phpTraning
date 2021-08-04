@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,6 +22,7 @@
 </head>
 <body class="mod-bg-1 mod-nav-link ">
 <main id="js-page-content" role="main" class="page-content">
+
     <div class="col-md-6">
         <div id="panel-1" class="panel">
             <div class="panel-hdr">
@@ -26,53 +30,34 @@
                     Задание
                 </h2>
                 <div class="panel-toolbar">
-                    <button class="btn btn-panel waves-effect waves-themed" data-action="panel-collapse"
-                            data-toggle="tooltip" data-offset="0,10" data-original-title="Collapse"></button>
-                    <button class="btn btn-panel waves-effect waves-themed" data-action="panel-fullscreen"
-                            data-toggle="tooltip" data-offset="0,10" data-original-title="Fullscreen"></button>
+                    <button class="btn btn-panel waves-effect waves-themed" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Collapse"></button>
+                    <button class="btn btn-panel waves-effect waves-themed" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Fullscreen"></button>
                 </div>
             </div>
             <div class="panel-container show">
                 <div class="panel-content">
                     <div class="panel-content">
                         <div class="form-group">
-                            <?php
-                            $host_bd = '127.0.0.1';
-                            $user_bd = 'root';
-                            $pass_bd = 'root';
-                            $db_name_bd = 'phptraning';
-
-                            $bdConnect = mysqli_connect($host_bd, $user_bd, $pass_bd, $db_name_bd);
-
-                            $t = $_GET['text'];
-                            if (isset($t)) {
-                                $sql_filter = mysqli_query($bdConnect, "SELECT post_text FROM text9 WHERE post_text = '$t'");
-                                while ($a = mysqli_fetch_array($sql_filter)) {
-                                    $slovo = $a["post_text"];
-                                }
-                                if (isset($slovo)) {
-                                    echo '<div class="alert alert-danger fade show" role="alert">
-                                        Такие данные уже есть в базе!
-                                    </div>';
-                                }else{
-                                    echo '<div class="alert alert-info fade show" role="alert">
-                                        Данные внесены в базу!
-                                    </div>';
-                                    mysqli_query($bdConnect, "INSERT INTO text9 (post_text) VALUES ('$t')");
-                                }
-
-                            }
-                            //echo $t;
-                            //echo var_dump(mysqli_fetch_array($sql_filter));
-
-                            ?>
-
-
-                            <form action="">
+                            <?php if(isset($_SESSION['danger'])):?>
+                                <div class="alert alert-danger fade show" role="alert">
+                                    <?php echo $_SESSION['danger'];
+                                    unset($_SESSION['danger']);
+                                    ?>
+                                </div>
+                            <?php endif;?>
+                            <?php if(isset($_SESSION['succes'])):?>
+                                <div class="alert alert-success fade show" role="alert">
+                                    <?php echo $_SESSION['succes'];
+                                    unset($_SESSION['succes']);
+                                    ?>
+                                </div>
+                            <?php endif;?>
+                            <form action="obr10.php" method="post">
                                 <label class="form-label" for="simpleinput">Text</label>
                                 <input type="text" name="text" class="form-control">
-                                <button class="btn btn-success mt-3">Submit</button>
+                                <button class="btn btn-success mt-3" type="submit">Submit</button>
                             </form>
+
                         </div>
                     </div>
                 </div>
