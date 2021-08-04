@@ -2,7 +2,7 @@
 -- Хост:                         127.0.0.1
 -- Версия сервера:               10.4.12-MariaDB-log - mariadb.org binary distribution
 -- Операционная система:         Win64
--- HeidiSQL Версия:              11.2.0.6213
+-- HeidiSQL Версия:              11.3.0.6295
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `text9` (
   `post_text` text COLLATE utf8mb4_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Дамп данных таблицы phptraning.text9: ~0 rows (приблизительно)
+-- Дамп данных таблицы phptraning.text9: ~6 rows (приблизительно)
 /*!40000 ALTER TABLE `text9` DISABLE KEYS */;
 INSERT INTO `text9` (`post_text`) VALUES
 	('проверка'),
@@ -48,24 +48,25 @@ INSERT INTO `text9` (`post_text`) VALUES
 	('gggg'),
 	('aaaaaaaaaaaaaa'),
 	('гет запрос'),
-	('123666');
+	('123666'),
+	('приии');
 /*!40000 ALTER TABLE `text9` ENABLE KEYS */;
 
 -- Дамп структуры для таблица phptraning.users
 CREATE TABLE IF NOT EXISTS `users` (
-  `img` text COLLATE utf8mb4_bin DEFAULT NULL,
+  `avatar` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
   `first_name` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL,
   `last_name` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL,
+  `competence` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL,
   `position` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL,
-  `status_in_company` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL,
   `twitter` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL,
-  `user_name` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL,
+  `username` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL,
   `status` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- Дамп данных таблицы phptraning.users: ~4 rows (приблизительно)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` (`img`, `first_name`, `last_name`, `position`, `status_in_company`, `twitter`, `user_name`, `status`) VALUES
+INSERT INTO `users` (`avatar`, `first_name`, `last_name`, `competence`, `position`, `twitter`, `username`, `status`) VALUES
 	('img/demo/authors/sunny.png', 'Sunny', 'A.', '(UI/UX Expert)', 'Lead Author', '@myplaneticket', 'myorange', 'active'),
 	('img/demo/authors/josh.png', 'Jos', 'K.', '(ASP.NET Developer)', 'Partner &amp; Contributor', '@atlantez', 'Walapa', 'active'),
 	('img/demo/authors/jovanni.png', 'Jovanni', 'Lo', '(PHP Developer)', 'Partner &amp; Contributor', '@lodev09', 'lodev09', 'disabled'),

@@ -34,36 +34,30 @@
                         <div class="panel-content">
                            <div class="d-flex flex-wrap demo demo-h-spacing mt-3 mb-3">
                                <?php
-                               //bdConnect
-                               $host_bd = '127.0.0.1';
-                               $user_bd = 'root';
-                               $pass_bd = 'root';
-                               $db_name_bd = 'phptraning';
 
-                               $bdConnect = mysqli_connect($host_bd, $user_bd, $pass_bd, $db_name_bd);
+                               $pdo = new PDO("mysql:host=127.0.0.1; dbname=phptraning;", "root","root");
                                $sql = "SELECT * FROM users";
-                               $a = mysqli_query($bdConnect, $sql);
-                               mysqli_close($bdConnect);
+                               $statement = $pdo->prepare($sql);
+                               $statement -> execute();
+                               $a = $statement -> fetchAll(PDO::FETCH_ASSOC);
+                               //var_dump($statement -> fetchAll(PDO::FETCH_ASSOC));die;
+                               ?>
 
-                               foreach ($a as $i) {
-                               echo " <div class=\"rounded-pill bg-white shadow-sm p-2 border-faded mr-3 d-flex flex-row align-items-center justify-content-center flex-shrink-0 $i[status]\">
-                               <img src=\"$i[img]\" alt=\"$i[first_name]$i[last_name]\" class=\"img-thumbnail img-responsive rounded-circle\" style=\"width:5rem; height: 5rem;\">
-                               <div class=\"ml-2 mr-3\">
-                               <h5 class=\"m-0\">
-                                   $i[first_name]$i[last_name] $i[position]
-                                   <small class=\"m-0 fw-300\">
-                                   $i[status_in_company]
-                                   </small>
-                               </h5>
-                               <a href=\"https://twitter.com/$i[twitter]\" class=\"text-info fs-sm\" target=\"_blank\">$i[twitter]</a>
-                               -
-                               <a href=\"https://wrapbootstrap.com/user/$i[user_name]\" class=\"text-info fs-sm\" target=\"_blank\" title=\"Contact $i[first_name]\"><i class=\"fal fa-envelope\"></i></a>
-                           </div>
-                        </div>";
-                        }
-
-
-                        ?>
+                              <?php foreach ($a as $i):?>
+                               <div class="rounded-pill bg-white shadow-sm p-2 border-faded mr-3 d-flex flex-row align-items-center justify-content-center flex-shrink-0 <?php echo $i["status"]?>">
+                                   <img src="<?php echo $i["avatar"]?>" alt="<?php echo $i["first_name"]?> <?php echo $i["last_name"]?>" class="img-thumbnail img-responsive rounded-circle" style="width:5rem; height: 5rem;">
+                                   <div class="ml-2 mr-3">
+                                       <h5 class="m-0">
+                                           <?php echo $i["first_name"]?> <?php echo $i["last_name"]?> <?php echo $i["competence"]?>
+                                           <small class="m-0 fw-300">
+                                               <?php echo $i["position"]?>
+                                           </small>
+                                       </h5>
+                                       <a href="https://twitter.com/<?php echo $i["twitter"]?>" class="text-info fs-sm" target="_blank"><?php echo $i["twitter"]?></a> -
+                                       <a href="https://wrapbootstrap.com/user/<?php echo $i["username"]?>" class="text-info fs-sm" target="_blank" title="Contact <?php echo $i["first_name"]?>"><i class="fal fa-envelope"></i></a>
+                                   </div>
+                               </div>
+                               <?php endforeach;?>
                         </div>
                         </div>
                     </div>
