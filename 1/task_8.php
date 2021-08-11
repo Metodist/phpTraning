@@ -40,6 +40,7 @@
             $statement->execute();
             $a = $statement->fetchAll(PDO::FETCH_ASSOC);
             //var_dump($statement -> fetchAll(PDO::FETCH_ASSOC));die;
+
             ?>
             <div class="panel-container show">
                 <div class="panel-content">
