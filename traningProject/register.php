@@ -16,7 +16,7 @@ function user_register(string $email, string $pass){
     $sql = "INSERT INTO users (email, password) VALUES ('$email', '$pass')";
     $statement = $pdo->prepare($sql);
     $statement->execute();
-    $a = $statement->fetchAll(PDO::FETCH_ASSOC);
+    $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
 if(!empty($item)){
