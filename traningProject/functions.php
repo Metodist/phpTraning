@@ -33,5 +33,21 @@ function redirect_to(string $path){
     exit;
 };
 
+function user_authorization(string $email, string $pass){
+    $pdo = new PDO("mysql:host=127.0.0.1; dbname=phptraning;", "root", "root");
+    $sql = "SELECT email, password FROM users WHERE email ='$email'";
+    $statement = $pdo->prepare($sql);
+    $statement->execute();
+    $item = $statement->fetchAll(PDO::FETCH_ASSOC);
+    $pass = md5($pass);
+    $login_data =[["email"=>"$email","password"=>"$pass"]];
+    if ($item == $login_data) {
+        $_SESSION['auth'] = $login_data;
+        return true;
+    } else {
+        return false;
+    }
+};
+
 
 ?>
