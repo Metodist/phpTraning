@@ -1,6 +1,10 @@
 <?php
 session_start();
 require "functions.php";
+if(is_not_logged_in()){
+    redirect_to("page_login.php");
+}
+logout();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,11 +31,11 @@ require "functions.php";
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
+                    <!--<li class="nav-item">
                         <a class="nav-link" href="page_login.php">Войти</a>
-                    </li>
+                    </li>-->
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Выйти</a>
+                        <a class="nav-link" href="?logout">Выйти</a>
                     </li>
                 </ul>
             </div>

@@ -42,12 +42,27 @@ function user_authorization(string $email, string $pass){
     $pass = md5($pass);
     $login_data =[["email"=>"$email","password"=>"$pass"]];
     if ($item == $login_data) {
-        $_SESSION['auth'] = $login_data;
+        $_SESSION['auth'] = $email;
         return true;
     } else {
         return false;
     }
 };
 
+function is_not_logged_in(){
+    if(empty($_SESSION['auth'])){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+function logout(){
+    if (isset($_GET['logout'])){
+        unset($_SESSION['auth']);
+        redirect_to("page_login.php");
+    }
+
+}
 
 ?>
