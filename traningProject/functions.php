@@ -65,4 +65,17 @@ function logout(){
 
 }
 
+function check_for_admin(){
+    $email = $_SESSION['auth'];
+    $pdo = new PDO("mysql:host=127.0.0.1; dbname=phptraning;", "root", "root");
+    $sql = "SELECT role FROM users WHERE email ='$email'";
+    $statement = $pdo->prepare($sql);
+    $statement->execute();
+    $item = $statement->fetchAll(PDO::FETCH_ASSOC);
+    if($item == [['role' => 'admin']]){
+        return true;
+    }else{
+        return false;
+    }
+}
 ?>
