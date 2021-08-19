@@ -78,4 +78,16 @@ function check_for_admin(){
         return false;
     }
 }
+
+function all_users_withdrawal(){
+    $pdo = new PDO("mysql:host=127.0.0.1; dbname=phptraning;", "root", "root");
+    $sql = "SELECT * FROM users";
+    $statement = $pdo->prepare($sql);
+    $statement->execute();
+    $i = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $i;
+}
+
+
+
 ?>
