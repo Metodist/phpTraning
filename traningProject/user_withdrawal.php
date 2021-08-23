@@ -1,6 +1,5 @@
 <?php
 $a = all_users_withdrawal();
-
 ?>
 
 <?php foreach ($a as $i):?>

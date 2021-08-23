@@ -74,27 +74,35 @@ CREATE TABLE IF NOT EXISTS `users` (
   `competence` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL,
   `twitter` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL,
   `vk` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL,
-  `instagram` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL,
   `telegram` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL,
+  `instagram` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL,
   `status` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL,
+  `work_status` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL,
   KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Дамп данных таблицы phptraning.users: ~14 rows (приблизительно)
+-- Дамп данных таблицы phptraning.users: ~17 rows (приблизительно)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` (`id`, `avatar`, `first_name`, `last_name`, `position`, `phone`, `email`, `address`, `username`, `password`, `role`, `competence`, `twitter`, `vk`, `instagram`, `telegram`, `status`) VALUES
-	(1, 'img/demo/authors/sunny.png', 'Sunny', 'A.', 'Lead Author', '+1 317-456-2501', 'admin@admin.lol', '10 Charist St, Detroit, MI, 48212, USA', 'myorange', '21232f297a57a5a743894a0e4a801fc3', 'admin', '(UI/UX Expert)', '@myplaneticket', NULL, NULL, NULL, 'active'),
-	(2, 'img/demo/authors/josh.png', 'Jos', 'K.', 'Partner &amp; Contributor', '+1 317-456-2502', '1@1.lol', '111 Hamtrammac, Detroit, MI, 48314, USA', 'Walapa', '21232f297a57a5a743894a0e4a801fc3', 'user', '(ASP.NET Developer)', '@atlantez', NULL, NULL, NULL, 'disabled'),
-	(3, 'img/demo/authors/jovanni.png', 'Jovanni', 'Lo', 'Partner &amp; Contributor', '+1 317-456-2503', '2@2.lol', '89 Smyth Rd, Detroit, MI, 48341, USA', 'lodev09', '21232f297a57a5a743894a0e4a801fc3', 'user', '(PHP Developer)', '@lodev09', NULL, NULL, NULL, 'disabled'),
-	(4, 'img/demo/authors/roberto.png', 'Roberto', 'R.', 'Partner &amp; Contributor', '+1 317-456-2504', '3@3.lol', '130 Jamie Rd, Detroit, MI, 48313, USA', 'sildur', '21232f297a57a5a743894a0e4a801fc3', 'user', '(Rails Developer)', '@sildur', NULL, NULL, NULL, 'active'),
-	(12, 'img/demo/avatars/avatar-b.png', 'Oliver', 'Kopyov ', 'IT Director, Gotbootstrap Inc.', '+1 317-456-2564', 'oliver.kopyov@smartadminwebapp.com', '15 Charist St, Detroit, MI, 48212, USA', NULL, '21232f297a57a5a743894a0e4a801fc3', 'user', NULL, '@Kopyov', 'Kopyov ', 'Kopyov ', '@Kopyov ', 'active'),
-	(13, 'img/demo/avatars/avatar-c.png', 'Alita', 'Gray', 'Project Manager, Gotbootstrap Inc.', '+1 313-461-1347', 'Alita@smartadminwebapp.com', '134 Hamtrammac, Detroit, MI, 48314, USA', NULL, '21232f297a57a5a743894a0e4a801fc3', 'user', NULL, '@Alita', 'Alita', 'Alita', '@Alita', 'active'),
-	(14, 'img/demo/avatars/avatar-e.png', 'Dr. John', 'Cook PhD', 'Human Resources, Gotbootstrap Inc.', '+1 313-779-1347', 'john.cook@smartadminwebapp.com', '55 Smyth Rd, Detroit, MI, 48341, USA', NULL, '21232f297a57a5a743894a0e4a801fc3', 'user', NULL, '@DrJohn', 'DrJohn', 'DrJohn', '@DrJohn', 'active'),
-	(15, 'img/demo/avatars/avatar-k.png', 'Jim', 'Ketty', 'Staff Orgnizer, Gotbootstrap Inc.', '+1 313-779-3314', 'jim.ketty@smartadminwebapp.com', '134 Tasy Rd, Detroit, MI, 48212, USA', NULL, '21232f297a57a5a743894a0e4a801fc3', 'user', NULL, '@Ketty', 'Ketty', 'Ketty', '@Ketty', 'active'),
-	(16, 'img/demo/avatars/avatar-g.png', 'Dr. John', 'Oliver', 'Oncologist, Gotbootstrap Inc.', '+1 313-779-8134', 'john.oliver@smartadminwebapp.com', '134 Gallery St, Detroit, MI, 46214, USA', NULL, '21232f297a57a5a743894a0e4a801fc3', 'user', NULL, '@Oliver', 'Oliver', 'Oliver', '@Oliver', 'active'),
-	(17, 'img/demo/avatars/avatar-h.png', 'Sarah', 'McBrook', 'Xray Division, Gotbootstrap Inc.', '+1 313-779-7613', 'sarah.mcbrook@smartadminwebapp.com', '13 Jamie Rd, Detroit, MI, 48313, USA', NULL, '21232f297a57a5a743894a0e4a801fc3', 'user', NULL, '@McBrook', 'McBrook', 'McBrook', '@McBrook', 'active'),
-	(18, 'img/demo/avatars/avatar-i.png', 'Jimmy', 'Fellan', 'Accounting, Gotbootstrap Inc.', '+1 313-779-4314', 'jimmy.fallan@smartadminwebapp.com', '55 Smyth Rd, Detroit, MI, 48341, USA', NULL, '21232f297a57a5a743894a0e4a801fc3', 'user', NULL, '@Fellan', 'Fellan', 'Fellan', '@Fellan', 'active'),
-	(19, 'img/demo/avatars/avatar-j.png', 'Arica', 'Grace', 'Accounting, Gotbootstrap Inc', '+1 313-779-3347', 'arica.grace@smartadminwebapp.com', '798 Smyth Rd, Detroit, MI, 48341, USA', NULL, '21232f297a57a5a743894a0e4a801fc3', 'user', NULL, '@Arica', 'Arica', 'Arica', '@Arica', 'active');
+INSERT INTO `users` (`id`, `avatar`, `first_name`, `last_name`, `position`, `phone`, `email`, `address`, `username`, `password`, `role`, `competence`, `twitter`, `vk`, `telegram`, `instagram`, `status`, `work_status`) VALUES
+	(1, 'img/demo/authors/sunny.png', 'Sunny', 'A.', 'Lead Author', '+1 317-456-2501', 'admin@admin.lol', '10 Charist St, Detroit, MI, 48212, USA', 'myorange', '21232f297a57a5a743894a0e4a801fc3', 'admin', '(UI/UX Expert)', '@myplaneticket', NULL, NULL, NULL, 'active', NULL),
+	(2, 'img/demo/authors/josh.png', 'Jos', 'K.', 'Partner &amp; Contributor', '+1 317-456-2502', '1@1.lol', '111 Hamtrammac, Detroit, MI, 48314, USA', 'Walapa', '21232f297a57a5a743894a0e4a801fc3', 'user', '(ASP.NET Developer)', '@atlantez', NULL, NULL, NULL, 'disabled', NULL),
+	(3, 'img/demo/authors/jovanni.png', 'Jovanni', 'Lo', 'Partner &amp; Contributor', '+1 317-456-2503', '2@2.lol', '89 Smyth Rd, Detroit, MI, 48341, USA', 'lodev09', '21232f297a57a5a743894a0e4a801fc3', 'user', '(PHP Developer)', '@lodev09', NULL, NULL, NULL, 'disabled', NULL),
+	(4, 'img/demo/authors/roberto.png', 'Roberto', 'R.', 'Partner &amp; Contributor', '+1 317-456-2504', '3@3.lol', '130 Jamie Rd, Detroit, MI, 48313, USA', 'sildur', '21232f297a57a5a743894a0e4a801fc3', 'user', '(Rails Developer)', '@sildur', NULL, NULL, NULL, 'active', NULL),
+	(12, 'img/demo/avatars/avatar-b.png', 'Oliver', 'Kopyov ', 'IT Director, Gotbootstrap Inc.', '+1 317-456-2564', 'oliver.kopyov@smartadminwebapp.com', '15 Charist St, Detroit, MI, 48212, USA', NULL, '21232f297a57a5a743894a0e4a801fc3', 'user', NULL, '@Kopyov', 'Kopyov ', '@Kopyov ', 'Kopyov ', 'active', NULL),
+	(13, 'img/demo/avatars/avatar-c.png', 'Alita', 'Gray', 'Project Manager, Gotbootstrap Inc.', '+1 313-461-1347', 'Alita@smartadminwebapp.com', '134 Hamtrammac, Detroit, MI, 48314, USA', NULL, '21232f297a57a5a743894a0e4a801fc3', 'user', NULL, '@Alita', 'Alita', '@Alita', 'Alita', 'active', NULL),
+	(14, 'img/demo/avatars/avatar-e.png', 'Dr. John', 'Cook PhD', 'Human Resources, Gotbootstrap Inc.', '+1 313-779-1347', 'john.cook@smartadminwebapp.com', '55 Smyth Rd, Detroit, MI, 48341, USA', NULL, '21232f297a57a5a743894a0e4a801fc3', 'user', NULL, '@DrJohn', 'DrJohn', '@DrJohn', 'DrJohn', 'active', NULL),
+	(15, 'img/demo/avatars/avatar-k.png', 'Jim', 'Ketty', 'Staff Orgnizer, Gotbootstrap Inc.', '+1 313-779-3314', 'jim.ketty@smartadminwebapp.com', '134 Tasy Rd, Detroit, MI, 48212, USA', NULL, '21232f297a57a5a743894a0e4a801fc3', 'user', NULL, '@Ketty', 'Ketty', '@Ketty', 'Ketty', 'active', NULL),
+	(16, 'img/demo/avatars/avatar-g.png', 'Dr. John', 'Oliver', 'Oncologist, Gotbootstrap Inc.', '+1 313-779-8134', 'john.oliver@smartadminwebapp.com', '134 Gallery St, Detroit, MI, 46214, USA', NULL, '21232f297a57a5a743894a0e4a801fc3', 'user', NULL, '@Oliver', 'Oliver', '@Oliver', 'Oliver', 'active', NULL),
+	(17, 'img/demo/avatars/avatar-h.png', 'Sarah', 'McBrook', 'Xray Division, Gotbootstrap Inc.', '+1 313-779-7613', 'sarah.mcbrook@smartadminwebapp.com', '13 Jamie Rd, Detroit, MI, 48313, USA', NULL, '21232f297a57a5a743894a0e4a801fc3', 'user', NULL, '@McBrook', 'McBrook', '@McBrook', 'McBrook', 'active', NULL),
+	(18, 'img/demo/avatars/avatar-i.png', 'Jimmy', 'Fellan', 'Accounting, Gotbootstrap Inc.', '+1 313-779-4314', 'jimmy.fallan@smartadminwebapp.com', '55 Smyth Rd, Detroit, MI, 48341, USA', NULL, '21232f297a57a5a743894a0e4a801fc3', 'user', NULL, '@Fellan', 'Fellan', '@Fellan', 'Fellan', 'active', NULL),
+	(19, 'img/demo/avatars/avatar-j.png', 'Arica', 'Grace', 'Accounting, Gotbootstrap Inc', '+1 313-779-3347', 'arica.grace@smartadminwebapp.com', '798 Smyth Rd, Detroit, MI, 48341, USA', NULL, '21232f297a57a5a743894a0e4a801fc3', 'user', NULL, '@Arica', 'Arica', '@Arica', 'Arica', 'active', NULL),
+	(20, NULL, NULL, NULL, NULL, NULL, '123@123.lol', NULL, NULL, 'e10adc3949ba59abbe56e057f20f883e', 'user', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	(21, NULL, 'Василий ', NULL, NULL, NULL, '0123@0123.lol', NULL, NULL, 'e10adc3949ba59abbe56e057f20f883e', 'user', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	(22, NULL, 'Вася2', NULL, 'лидер секты', NULL, '09@09.lol', NULL, NULL, '21232f297a57a5a743894a0e4a801fc3', 'user', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	(23, NULL, 'Вася 4', NULL, 'место работы', NULL, '11223@11223.lol', NULL, NULL, '21232f297a57a5a743894a0e4a801fc3', 'user', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	(24, NULL, 'Вася 5', NULL, 'место работы АД', NULL, '1239@123.lol', 'адрес нахождения ад круг 4', NULL, '21232f297a57a5a743894a0e4a801fc3', 'user', NULL, NULL, NULL, NULL, NULL, NULL, 'Онлайн'),
+	(25, NULL, 'Вася 7', NULL, 'место работы АД', 'место работы АД', '112323@123.lol', 'адрес нахождения ад круг 4', NULL, '21232f297a57a5a743894a0e4a801fc3', 'user', NULL, NULL, 'vksilks', '', 'моя инста', NULL, 'Не беспокоить'),
+	(26, NULL, 'Вася 6', NULL, '', '', '12345678123@123.lol', 'вапро', NULL, '21232f297a57a5a743894a0e4a801fc3', 'user', NULL, NULL, 'vk', '', 'instaaaaa', NULL, 'Онлайн');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

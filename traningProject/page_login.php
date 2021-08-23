@@ -1,6 +1,9 @@
 <?php
 session_start();
 require "functions.php";
+if(!is_not_logged_in()){
+    redirect_to("users.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

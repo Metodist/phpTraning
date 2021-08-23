@@ -6,7 +6,7 @@ if(is_not_logged_in()){
 }
 logout();
 
-//var_dump(check_for_admin());
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,7 +53,7 @@ logout();
             <div class="row">
                 <div class="col-xl-12">
                     <?php if(check_for_admin()):?>
-                    <a class="btn btn-success" href="create_user.html">Добавить</a>
+                    <a class="btn btn-success" href="page_create_user.php">Добавить</a>
                     <?php endif;?>
 
                     <div class="border-faded bg-faded p-3 mb-g d-flex mt-3">
