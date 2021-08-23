@@ -2,6 +2,7 @@
 session_start();
 require "functions.php";
 //var_dump($_POST);
+//var_dump($_FILES);
 
 $email = $_POST['email'];
 $pass = $_POST['password'];
@@ -14,6 +15,8 @@ $vk = $_POST['vk'];
 $telegram = $_POST['telegram'];
 $instagram = $_POST['instagram'];
 
+
+
 if(empty(get_user($email))){
     $user_id = user_register($email, $pass);
     edit_first_name($user_id, $first_name);
@@ -24,6 +27,12 @@ if(empty(get_user($email))){
     edit_vk($user_id, $vk);
     edit_telegram($user_id, $telegram);
     edit_instagram($user_id, $instagram);
+
+    $uploaddir = 'C:\\OpenServer\\domains\\php.lol\\traningProject\\img\\demo\\avatars\\';
+    $uploadfile = $uploaddir . $user_id . basename($_FILES['avatar']['name']);
+    move_uploaded_file($_FILES['avatar']['tmp_name'], $uploadfile);
+    $link = 'img/demo/avatars/' . $user_id . $_FILES['avatar']['name'];
+    edit_avatar($user_id, $link);
 
     set_flash_message("success", "<strong>Уведомление!</strong> Пользователь создан" );
     redirect_to("/traningProject/users.php");

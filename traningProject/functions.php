@@ -153,5 +153,13 @@ function edit_instagram($user_id, $instagram){
     $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
+function edit_avatar($user_id, $avatar){
+    $pdo = new PDO("mysql:host=127.0.0.1; dbname=phptraning;", "root", "root");
+    $sql = "UPDATE users SET avatar = '$avatar' WHERE id = $user_id";
+    $statement = $pdo->prepare($sql);
+    $statement->execute();
+    $statement->fetchAll(PDO::FETCH_ASSOC);
+}
+
 
 ?>

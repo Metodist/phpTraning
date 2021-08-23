@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `text9` (
   `post_text` text COLLATE utf8mb4_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Дамп данных таблицы phptraning.text9: ~12 rows (приблизительно)
+-- Дамп данных таблицы phptraning.text9: ~13 rows (приблизительно)
 /*!40000 ALTER TABLE `text9` DISABLE KEYS */;
 INSERT INTO `text9` (`post_text`) VALUES
 	('проверка'),
@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   KEY `id` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Дамп данных таблицы phptraning.users: ~17 rows (приблизительно)
+-- Дамп данных таблицы phptraning.users: ~19 rows (приблизительно)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `avatar`, `first_name`, `last_name`, `position`, `phone`, `email`, `address`, `username`, `password`, `role`, `competence`, `twitter`, `vk`, `telegram`, `instagram`, `status`, `work_status`) VALUES
 	(1, 'img/demo/authors/sunny.png', 'Sunny', 'A.', 'Lead Author', '+1 317-456-2501', 'admin@admin.lol', '10 Charist St, Detroit, MI, 48212, USA', 'myorange', '21232f297a57a5a743894a0e4a801fc3', 'admin', '(UI/UX Expert)', '@myplaneticket', NULL, NULL, NULL, 'active', NULL),
@@ -102,7 +102,8 @@ INSERT INTO `users` (`id`, `avatar`, `first_name`, `last_name`, `position`, `pho
 	(23, NULL, 'Вася 4', NULL, 'место работы', NULL, '11223@11223.lol', NULL, NULL, '21232f297a57a5a743894a0e4a801fc3', 'user', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 	(24, NULL, 'Вася 5', NULL, 'место работы АД', NULL, '1239@123.lol', 'адрес нахождения ад круг 4', NULL, '21232f297a57a5a743894a0e4a801fc3', 'user', NULL, NULL, NULL, NULL, NULL, NULL, 'Онлайн'),
 	(25, NULL, 'Вася 7', NULL, 'место работы АД', 'место работы АД', '112323@123.lol', 'адрес нахождения ад круг 4', NULL, '21232f297a57a5a743894a0e4a801fc3', 'user', NULL, NULL, 'vksilks', '', 'моя инста', NULL, 'Не беспокоить'),
-	(26, NULL, 'Вася 6', NULL, '', '', '12345678123@123.lol', 'вапро', NULL, '21232f297a57a5a743894a0e4a801fc3', 'user', NULL, NULL, 'vk', '', 'instaaaaa', NULL, 'Онлайн');
+	(26, NULL, 'Вася 6', NULL, '', '', '12345678123@123.lol', 'вапро', NULL, '21232f297a57a5a743894a0e4a801fc3', 'user', NULL, NULL, 'vk', '', 'instaaaaa', NULL, 'Онлайн'),
+	(40, 'img/demo/avatars/4080images.jpg', 'Старый еврей', NULL, '', '', '123@123.lolasdfg', '', NULL, 'e10adc3949ba59abbe56e057f20f883e', 'user', NULL, NULL, '', '', '', NULL, 'Онлайн');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
