@@ -89,37 +89,14 @@ function all_users_withdrawal(){
     return $i;
 }
 
-function edit_first_name(int $user_id, string $first_name){
+function edit_general_information($user_id, $first_name, $position, $phone, $address){
     $pdo = new PDO("mysql:host=127.0.0.1; dbname=phptraning;", "root", "root");
-    $sql = "UPDATE users SET first_name = '$first_name' WHERE id = $user_id";
+    $sql = "UPDATE users SET first_name = '$first_name', position = '$position', phone = '$phone', address = '$address' WHERE id = $user_id";
     $statement = $pdo->prepare($sql);
     $statement->execute();
     $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function edit_position(int $user_id, string $position){
-    $pdo = new PDO("mysql:host=127.0.0.1; dbname=phptraning;", "root", "root");
-    $sql = "UPDATE users SET position = '$position' WHERE id = $user_id";
-    $statement = $pdo->prepare($sql);
-    $statement->execute();
-    $statement->fetchAll(PDO::FETCH_ASSOC);
-}
-
-function edit_phone(int $user_id, string $phone){
-    $pdo = new PDO("mysql:host=127.0.0.1; dbname=phptraning;", "root", "root");
-    $sql = "UPDATE users SET phone = '$phone' WHERE id = $user_id";
-    $statement = $pdo->prepare($sql);
-    $statement->execute();
-    $statement->fetchAll(PDO::FETCH_ASSOC);
-}
-
-function edit_address($user_id, $address){
-    $pdo = new PDO("mysql:host=127.0.0.1; dbname=phptraning;", "root", "root");
-    $sql = "UPDATE users SET address = '$address' WHERE id = $user_id";
-    $statement = $pdo->prepare($sql);
-    $statement->execute();
-    $statement->fetchAll(PDO::FETCH_ASSOC);
-}
 
 function edit_work_status($user_id, $work_status){
     $pdo = new PDO("mysql:host=127.0.0.1; dbname=phptraning;", "root", "root");
@@ -129,33 +106,22 @@ function edit_work_status($user_id, $work_status){
     $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function edit_vk($user_id, $vk){
+function edit_social($user_id, $vk, $telegram, $instagram){
     $pdo = new PDO("mysql:host=127.0.0.1; dbname=phptraning;", "root", "root");
-    $sql = "UPDATE users SET vk = '$vk' WHERE id = $user_id";
+    $sql = "UPDATE users SET vk = '$vk', telegram = '$telegram', instagram = '$instagram' WHERE id = $user_id";
     $statement = $pdo->prepare($sql);
     $statement->execute();
     $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function edit_telegram($user_id, $telegram){
-    $pdo = new PDO("mysql:host=127.0.0.1; dbname=phptraning;", "root", "root");
-    $sql = "UPDATE users SET telegram = '$telegram' WHERE id = $user_id";
-    $statement = $pdo->prepare($sql);
-    $statement->execute();
-    $statement->fetchAll(PDO::FETCH_ASSOC);
-}
+function edit_avatar($user_id){
+    $uploaddir = 'C:\\OpenServer\\domains\\php.lol\\traningProject\\img\\demo\\avatars\\';
+    $uploadfile = $uploaddir . $user_id . basename($_FILES['avatar']['name']);
+    move_uploaded_file($_FILES['avatar']['tmp_name'], $uploadfile);
+    $link = 'img/demo/avatars/' . $user_id . $_FILES['avatar']['name'];
 
-function edit_instagram($user_id, $instagram){
     $pdo = new PDO("mysql:host=127.0.0.1; dbname=phptraning;", "root", "root");
-    $sql = "UPDATE users SET instagram = '$instagram' WHERE id = $user_id";
-    $statement = $pdo->prepare($sql);
-    $statement->execute();
-    $statement->fetchAll(PDO::FETCH_ASSOC);
-}
-
-function edit_avatar($user_id, $avatar){
-    $pdo = new PDO("mysql:host=127.0.0.1; dbname=phptraning;", "root", "root");
-    $sql = "UPDATE users SET avatar = '$avatar' WHERE id = $user_id";
+    $sql = "UPDATE users SET avatar = '$link' WHERE id = $user_id";
     $statement = $pdo->prepare($sql);
     $statement->execute();
     $statement->fetchAll(PDO::FETCH_ASSOC);

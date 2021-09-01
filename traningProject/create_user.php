@@ -19,20 +19,10 @@ $instagram = $_POST['instagram'];
 
 if(empty(get_user($email))){
     $user_id = user_register($email, $pass);
-    edit_first_name($user_id, $first_name);
-    edit_position($user_id, $position);
-    edit_phone($user_id, $position);
-    edit_address($user_id, $address);
+    edit_general_information($user_id, $first_name, $position, $phone, $address);
     edit_work_status($user_id, $work_status);
-    edit_vk($user_id, $vk);
-    edit_telegram($user_id, $telegram);
-    edit_instagram($user_id, $instagram);
-
-    $uploaddir = 'C:\\OpenServer\\domains\\php.lol\\traningProject\\img\\demo\\avatars\\';
-    $uploadfile = $uploaddir . $user_id . basename($_FILES['avatar']['name']);
-    move_uploaded_file($_FILES['avatar']['tmp_name'], $uploadfile);
-    $link = 'img/demo/avatars/' . $user_id . $_FILES['avatar']['name'];
-    edit_avatar($user_id, $link);
+    edit_social($user_id, $vk, $telegram, $instagram);
+    edit_avatar($user_id);
 
     set_flash_message("success", "<strong>Уведомление!</strong> Пользователь создан" );
     redirect_to("/traningProject/users.php");
