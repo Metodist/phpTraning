@@ -5,7 +5,12 @@ if(is_not_logged_in()){
     redirect_to("page_login.php");
 }
 logout();
-$item = get_user_by_id($_GET['id']);
+if(isset($_GET['id'])){
+    $item = get_user_by_id($_GET['id']);
+}else{
+    redirect_to("users.php");
+}
+
 //var_dump($item);
 ?>
 <!DOCTYPE html>
