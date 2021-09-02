@@ -11,8 +11,10 @@ $a = all_users_withdrawal();
                                     <span class="rounded-circle profile-image d-block " style="background-image:url('<?php echo $i["avatar"]?>'); background-size: cover;"></span>
                                 </span>
                     <div class="info-card-text flex-1">
+                        <a href="page_profile.php?id=<?php echo $i["id"]?>" class="fs-xl text-truncate text-truncate-lg text-info">
+                        <?php echo $i["first_name"]?> <?php echo $i["last_name"]?>
                         <a href="javascript:void(0);" class="fs-xl text-truncate text-truncate-lg text-info" data-toggle="dropdown" aria-expanded="false">
-                            <?php echo $i["first_name"]?> <?php echo $i["last_name"]?>
+
                             <?php if(check_for_admin() || $_SESSION['auth'] == $i["email"] ):?>
                             <i class="fal fas fa-cog fa-fw d-inline-block ml-1 fs-md"></i>
                             <i class="fal fa-angle-down d-inline-block ml-1 fs-md"></i>

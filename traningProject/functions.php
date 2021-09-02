@@ -141,9 +141,18 @@ function edit_avatar($user_id){
     $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function get_user_by_id($email){
+function get_user_by_email($email){
     $pdo = new PDO("mysql:host=127.0.0.1; dbname=phptraning;", "root", "root");
     $sql = "SELECT * FROM users WHERE email ='$email'";
+    $statement = $pdo->prepare($sql);
+    $statement->execute();
+    $item = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $item;
+}
+
+function get_user_by_id($id){
+    $pdo = new PDO("mysql:host=127.0.0.1; dbname=phptraning;", "root", "root");
+    $sql = "SELECT * FROM users WHERE id ='$id'";
     $statement = $pdo->prepare($sql);
     $statement->execute();
     $item = $statement->fetchAll(PDO::FETCH_ASSOC);
