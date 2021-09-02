@@ -20,16 +20,16 @@ $a = all_users_withdrawal();
                         </a>
                         <?php if(check_for_admin() || $_SESSION['auth'] == $i["email"]):?>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="edit?id=<?php echo $i["id"]?>">
+                                <a class="dropdown-item" href="edit.php?id=<?php echo $i["id"]?>">
                                     <i class="fa fa-edit"></i>
                                     Редактировать</a>
-                                <a class="dropdown-item" href="security?id=<?php echo $i["id"]?>">
+                                <a class="dropdown-item" href="security.php?id=<?php echo $i["id"]?>">
                                     <i class="fa fa-lock"></i>
                                     Безопасность</a>
-                                <a class="dropdown-item" href="status?id=<?php echo $i["id"]?>">
+                                <a class="dropdown-item" href="status.php?id=<?php echo $i["id"]?>">
                                     <i class="fa fa-sun"></i>
                                     Установить статус</a>
-                                <a class="dropdown-item" href="media?id=<?php echo $i["id"]?>">
+                                <a class="dropdown-item" href="media.php?id=<?php echo $i["id"]?>">
                                     <i class="fa fa-camera"></i>
                                     Загрузить аватар
                                 </a>

@@ -80,6 +80,20 @@ function check_for_admin(){
     }
 }
 
+function access_check(){
+    $email = $_SESSION['auth'];
+    $pdo = new PDO("mysql:host=127.0.0.1; dbname=phptraning;", "root", "root");
+    $sql = "SELECT id FROM users WHERE email ='$email'";
+    $statement = $pdo->prepare($sql);
+    $statement->execute();
+    $item = $statement->fetchAll(PDO::FETCH_ASSOC);
+    if($item == [['id' => $_GET['id']]]){
+        return true;
+    }else{
+        return false;
+    }
+}
+
 function all_users_withdrawal(){
     $pdo = new PDO("mysql:host=127.0.0.1; dbname=phptraning;", "root", "root");
     $sql = "SELECT * FROM users";
@@ -127,5 +141,13 @@ function edit_avatar($user_id){
     $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
+function get_user_by_id($email){
+    $pdo = new PDO("mysql:host=127.0.0.1; dbname=phptraning;", "root", "root");
+    $sql = "SELECT * FROM users WHERE email ='$email'";
+    $statement = $pdo->prepare($sql);
+    $statement->execute();
+    $item = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $item;
+}
 
 ?>
