@@ -180,4 +180,18 @@ function edit_credential($user_id, $email, $password, $old_password){
 
     $_SESSION['auth'] = $email;
 }
+
+function has_image($user_id){
+    $pdo = new PDO("mysql:host=127.0.0.1; dbname=phptraning;", "root", "root");
+    $sql = "SELECT avatar FROM users WHERE id = $user_id";
+    $statement = $pdo->prepare($sql);
+    $statement->execute();
+    $item = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    if(empty($item)){
+        return 'img/demo/avatars/avatar-m.png';
+    }else{
+        return $item;
+    }
+}
 ?>

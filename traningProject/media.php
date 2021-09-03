@@ -1,3 +1,23 @@
+<?php
+session_start();
+require "functions.php";
+logout();
+if (is_not_logged_in()) {
+    redirect_to("page_login.php");
+}
+
+if (!check_for_admin()) {
+    if (!access_check()) {
+        set_flash_message("danger", "можно редактировать только свой профиль");
+        redirect_to("users.php");
+    }
+}
+$item = get_user_by_id($_GET['id']);
+
+$avatar = has_image($_GET['id']);
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,27 +38,26 @@
         <div class="collapse navbar-collapse" id="navbarColor02">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Главная <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="users.php">Главная <span class="sr-only">(current)</span></a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
+
                 <li class="nav-item">
-                    <a class="nav-link" href="page_login.php">Войти</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Выйти</a>
+                    <a class="nav-link" href="?logout">Выйти</a>
                 </li>
             </ul>
         </div>
     </nav>
     <main id="js-page-content" role="main" class="page-content mt-3">
+        <?php display_flash_message("success"); ?>
         <div class="subheader">
             <h1 class="subheader-title">
                 <i class='subheader-icon fal fa-image'></i> Загрузить аватар
             </h1>
 
         </div>
-        <form action="">
+        <form action="mediahandle.php" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-xl-6">
                     <div id="panel-1" class="panel">
@@ -47,13 +66,15 @@
                                 <h2>Текущий аватар</h2>
                             </div>
                             <div class="panel-content">
+                                <!-- hidden_param -->
+                                <input type="hidden" id="user_id" name="user_id" value="<?php echo $item[0]['id'] ?>">
                                 <div class="form-group">
-                                    <img src="img/demo/authors/josh.png" alt="" class="img-responsive" width="200">
+                                    <img src="<?php echo $avatar[0]['avatar']; ?>" alt="" class="img-responsive" width="200">
                                 </div>
 
                                 <div class="form-group">
                                     <label class="form-label" for="example-fileinput">Выберите аватар</label>
-                                    <input type="file" id="example-fileinput" class="form-control-file">
+                                    <input type="file" name="avatar" id="example-fileinput" class="form-control-file">
                                 </div>
 
 
