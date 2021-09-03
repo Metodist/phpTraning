@@ -141,14 +141,14 @@ function edit_avatar($user_id){
     $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function get_user_by_email($email){
+/*function get_user_by_email($email){
     $pdo = new PDO("mysql:host=127.0.0.1; dbname=phptraning;", "root", "root");
     $sql = "SELECT * FROM users WHERE email ='$email'";
     $statement = $pdo->prepare($sql);
     $statement->execute();
     $item = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $item;
-}
+}*/
 
 function get_user_by_id($id){
     $pdo = new PDO("mysql:host=127.0.0.1; dbname=phptraning;", "root", "root");
@@ -159,4 +159,19 @@ function get_user_by_id($id){
     return $item;
 }
 
+function edit_credential($user_id, $email, $password, $old_password){
+    if(isset($password)){
+        $pass = md5($password);
+    }else{
+        $pass = $old_password;
+    }
+
+    $pdo = new PDO("mysql:host=127.0.0.1; dbname=phptraning;", "root", "root");
+    $sql = "UPDATE users SET email = '$email', password = '$pass' WHERE id = $user_id";
+    $statement = $pdo->prepare($sql);
+    $statement->execute();
+    $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    $_SESSION['auth'] = $email;
+}
 ?>

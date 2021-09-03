@@ -6,7 +6,6 @@ if(is_not_logged_in()){
 }
 logout();
 
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

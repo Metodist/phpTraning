@@ -12,7 +12,7 @@ if (!check_for_admin()) {
         redirect_to("users.php");
     }
 }
-$item = get_user_by_email($_SESSION['auth']);
+$item = get_user_by_id($_GET['id']);
 
 //var_dump($_SERVER);
 ?>
