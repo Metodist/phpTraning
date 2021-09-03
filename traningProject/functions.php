@@ -113,8 +113,14 @@ function edit_general_information($user_id, $first_name, $position, $phone, $add
 
 
 function edit_work_status($user_id, $work_status){
+    $status = [["status"=>"online", "value"=>"Онлайн"],["status"=>"away", "value"=>"Отошел"],["status"=>"not disturb", "value"=>"Не беспокоить"]];
+    foreach ($status as $i){
+        if($i['value'] == $work_status){
+            $j = $i['status'];
+        }
+    }
     $pdo = new PDO("mysql:host=127.0.0.1; dbname=phptraning;", "root", "root");
-    $sql = "UPDATE users SET work_status = '$work_status' WHERE id = $user_id";
+    $sql = "UPDATE users SET work_status = '$j' WHERE id = $user_id";
     $statement = $pdo->prepare($sql);
     $statement->execute();
     $statement->fetchAll(PDO::FETCH_ASSOC);
