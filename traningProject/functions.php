@@ -147,14 +147,14 @@ function edit_avatar($user_id){
     $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
-/*function get_user_by_email($email){
+function get_user_id_by_email($email){
     $pdo = new PDO("mysql:host=127.0.0.1; dbname=phptraning;", "root", "root");
-    $sql = "SELECT * FROM users WHERE email ='$email'";
+    $sql = "SELECT id FROM users WHERE email ='$email'";
     $statement = $pdo->prepare($sql);
     $statement->execute();
     $item = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $item;
-}*/
+}
 
 function get_user_by_id($id){
     $pdo = new PDO("mysql:host=127.0.0.1; dbname=phptraning;", "root", "root");
@@ -193,5 +193,49 @@ function has_image($user_id){
     }else{
         return $item;
     }
+}
+
+function delete($user_id){
+    if (isset($_GET['delete'])){
+        $pdo = new PDO("mysql:host=127.0.0.1; dbname=phptraning;", "root", "root");
+        if(access_check()){
+            $sql = "SELECT avatar FROM users WHERE id = $user_id";
+            $statement = $pdo->prepare($sql);
+            $statement->execute();
+            $avatar = $statement->fetchAll(PDO::FETCH_ASSOC);
+            if(isset($avatar[0]['avatar'])){
+                unlink($avatar[0]['avatar']);
+            }
+            $sql = "DELETE FROM users WHERE id = $user_id";
+            $statement = $pdo->prepare($sql);
+            $statement->execute();
+            $statement->fetchAll(PDO::FETCH_ASSOC);
+            set_flash_message("success", "Ваш профиль удален");
+            unset($_SESSION['auth']);
+            redirect_to("page_login.php");
+
+        }else{
+            if(check_for_admin()){
+                $sql = "SELECT avatar FROM users WHERE id = $user_id";
+                $statement = $pdo->prepare($sql);
+                $statement->execute();
+                $avatar = $statement->fetchAll(PDO::FETCH_ASSOC);
+                if(isset($avatar[0]['avatar'])){
+                    unlink($avatar[0]['avatar']);
+                }
+                $sql = "DELETE FROM users WHERE id = $user_id";
+                $statement = $pdo->prepare($sql);
+                $statement->execute();
+                $statement->fetchAll(PDO::FETCH_ASSOC);
+                set_flash_message("success", "Профиль пользователя удален");
+                redirect_to("users.php");
+            }else{
+                set_flash_message("danger", "можно удалить только свой профиль");
+                redirect_to("users.php");
+            }
+        }
+    }
+
+
 }
 ?>

@@ -35,7 +35,7 @@ $a = all_users_withdrawal();
                                     <i class="fa fa-camera"></i>
                                     Загрузить аватар
                                 </a>
-                                <a href="#" class="dropdown-item" onclick="return confirm('are you sure?');">
+                                <a href="?id=<?php echo $i["id"] ?>&delete" class="dropdown-item" onclick="return confirm('Вы уверены? Это действие нельзя отменить!');">
                                     <i class="fa fa-window-close"></i>
                                     Удалить
                                 </a>

@@ -1,10 +1,12 @@
 <?php
 session_start();
 require "functions.php";
+logout();
 if(is_not_logged_in()){
     redirect_to("page_login.php");
 }
-logout();
+delete($_GET['id']);
+
 
 ?>
 <!DOCTYPE html>
