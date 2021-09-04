@@ -4,8 +4,7 @@ function get_user(string $email){
     $sql = "SELECT email FROM users WHERE email ='$email'";
     $statement = $pdo->prepare($sql);
     $statement->execute(['email'=> $email]);
-    $item = $statement->fetchAll(PDO::FETCH_ASSOC);
-    return $item;
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
 };
 
 function user_register(string $email, string $pass){
@@ -222,11 +221,10 @@ function delete($user_id){
             if(check_for_admin()){
                 user_delete($user_id);
                 set_flash_message("success", "Профиль пользователя удален");
-                redirect_to("users.php");
             }else{
                 set_flash_message("danger", "можно удалить только свой профиль");
-                redirect_to("users.php");
             }
+            redirect_to("users.php");
         }
     }
 
